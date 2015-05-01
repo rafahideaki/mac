@@ -8,7 +8,6 @@ public class Ataque {
 		this.dano = dano;
 		this.prioridade = prioridade;
 		this.nome = nome;
-		System.out.println("Mudei");
 	}
 	
 	

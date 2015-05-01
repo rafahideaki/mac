@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 
 public class Evento {
+	static Scanner sc = new Scanner(System.in);
 	private boolean fim = false;
 	private int acao1,acao2;
 	private int ataque1, ataque2;
@@ -78,17 +79,55 @@ public class Evento {
 		}
 		return listaInteiros;
 	}
+		
+	public Treinador pegaDados(){
+		String texto,nome;
+		
+		System.out.println("Digite seu nome: ");
+		nome = sc.nextLine();
+		System.out.println(nome + ",Choose 6 pokemon!");
+		Listas.mostraListaPokemon(Listas.listaPokemons);
+		texto = sc.nextLine();
+		int listaInteiros[] = this.stringParaListaInteiros(texto);
+		Pokemon[] listaPokTreinador = new Pokemon[6];
+		this.putPokemons(listaInteiros, listaPokTreinador, Listas.listaPokemons);
+		Treinador treinador1 = new Treinador("Ash",listaPokTreinador,Listas.listaItens,listaInteiros.length);
+		return treinador1;
 	
+	}
+	
+	public void putPokemons(int[] listaEscolhas,Pokemon[] listaPokTreinador,Pokemon[] lista){
+		int i;
+		for(i = 0; i < listaEscolhas.length && listaEscolhas[i] != -1;i++ ){
+			listaPokTreinador[i] = lista[listaEscolhas[i]];
+		}
+	}
+	
+	public void zerarLista(int[] listaEscolhas){
+		int i;
+		for (i = 0; i < listaEscolhas.length;i++){
+			listaEscolhas[i] = -1;
+		}
+	}
+	
+	public void putItens(int[]listaEscolhas,Item[]listaItensTreinador,Item[] lista){
+		int i;
+		for(i = 0; i < listaEscolhas.length && listaEscolhas[i] != -1; i ++){
+			listaItensTreinador[i] = lista[listaEscolhas[i]];
+		}
+	}
+	
+	
+
+
 	public static void main(String[] args){
 		Evento batalha = new Evento();
-		String texto;
-		Scanner sc = new Scanner(System.in);
-		texto = sc.nextLine();
-		int listaInteiros[] = batalha.stringParaListaInteiros(texto);
-		int i = 0;
-		for (i=0;i<listaInteiros.length;i++){
-		System.out.println(listaInteiros[i]);
-		}
+		
+		
+		Treinador treinador1 = batalha.pegaDados();
+		Treinador treinador2 = batalha.pegaDados();
+
+		
 		sc.close();
 		
 		

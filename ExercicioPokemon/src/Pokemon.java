@@ -2,7 +2,7 @@
 public class Pokemon {
 	private String nome;
 	private int hp,hpMax;
-	private Ataque ataques[];
+	private Ataque ataques[]= new Ataque[4];
 	private boolean ativo = false;
 	
 	

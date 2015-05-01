@@ -1,14 +1,14 @@
 
 public class Treinador {
 	private String nome;
-	private Pokemon pokemons[];
-	private Item itens[];
+	private Pokemon pokemons[]= new Pokemon[6];
+	private Item itens[] = new Item[4];
 	private int numPok;
 	
 	public Treinador(String nome,Pokemon pokemons[],Item itens[],int numPok){
 		this.nome = nome;
-		this.pokemons = new Pokemon[6];
-		this.itens = new Item[1549765465];
+		this.pokemons = pokemons;
+		this.itens = itens;
 		this.numPok = numPok;
 	}
 	
@@ -54,9 +54,30 @@ public class Treinador {
 	}
 	
 	public String mostraPokemon(){
-		String lista = ("(1)" + this.pokemons[0] + " / (2) " + this.pokemons[1] +
-				        " / (3) " + this.pokemons[2] + " / (4) " + this.pokemons[3] +
-				        " / (5) " + this.pokemons[4] + " / (6) " + this.pokemons[5]);
+		System.out.println("Chegou");
+		System.out.println(this.numPok);
+		String lista;
+		if (this.numPok == 1){
+			lista = ("(1)" + this.pokemons[0].getNome());
+		} else if (this.numPok == 2){
+			lista = ("(1)" + this.pokemons[0].getNome() + " / (2) " + this.pokemons[1].getNome());
+		} else if (this.numPok == 3){
+			lista = ("(1)" + this.pokemons[0].getNome() + " / (2) " + this.pokemons[1].getNome() +
+		        	" / (3) " + this.pokemons[2].getNome());
+		} else if (this.numPok == 4){
+			lista = ("(1)" + this.pokemons[0].getNome() + " / (2) " + this.pokemons[1].getNome() +
+		        	" / (3) " + this.pokemons[2].getNome() + " / (4) " + this.pokemons[3].getNome());
+		} else if (this.numPok == 5){
+			lista = ("(1)" + this.pokemons[0].getNome() + " / (2) " + this.pokemons[1].getNome() +
+		        	" / (3) " + this.pokemons[2].getNome() + " / (4) " + this.pokemons[3].getNome() +
+		        	" / (5) " + this.pokemons[4].getNome());
+		} else {
+			lista = ("(1)" + this.pokemons[0].getNome() + " / (2) " + this.pokemons[1].getNome() +
+		        	" / (3) " + this.pokemons[2].getNome() + " / (4) " + this.pokemons[3].getNome() +
+		        	" / (5) " + this.pokemons[4].getNome() + " / (6) " + this.pokemons[5].getNome());
+		}
+		
+		System.out.println(lista);
 		return lista;
 	}
 	

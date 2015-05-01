@@ -60,22 +60,36 @@ public class Evento {
 		} else {
 			System.out.println(looser.getNome() + ", choose another pokemon: ");
 			System.out.println(looser.mostraPokemon());
-			num = A.leTeclado();
+			num = A.leTecladoInteiro();
 			looser.getListaPok()[num].AtivaPokemon();
 			return false;
 		}
 	}
 	
+	public int[] stringParaListaInteiros(String string){
+		int i;
+		
+		String certa[];
+		certa = string.split(" ");
+		int listaInteiros[] = new int[certa.length];
+		
+		for (i = 0;i<certa.length;i++){
+			listaInteiros[i] =Integer.parseInt(certa[i]);
+		}
+		return listaInteiros;
+	}
 	
 	public static void main(String[] args){
 		Evento batalha = new Evento();
-		Listas lista = new Listas();
-		System.out.println("Trainer 1,Choose 6 pokemon !");
-		lista.mostraListaPokemon();
-		batalha.modificaAcao1(leTeclado());
-		System.out.println("Trainer 2,Choose 6 pokemon");
-		lista.mostraListaPokemon();
-		batalha.modificaAcao2(leTeclado());
+		String texto;
+		Scanner sc = new Scanner(System.in);
+		texto = sc.nextLine();
+		int listaInteiros[] = batalha.stringParaListaInteiros(texto);
+		int i = 0;
+		for (i=0;i<listaInteiros.length;i++){
+		System.out.println(listaInteiros[i]);
+		}
+		sc.close();
 		
 		
 	}

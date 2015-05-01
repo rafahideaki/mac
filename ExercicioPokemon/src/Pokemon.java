@@ -1,15 +1,19 @@
 
 public class Pokemon {
 	private String nome;
-	private int hp;
+	private int hp,hpMax;
 	private Ataque ataques[];
 	private boolean ativo = false;
 	
 	
-	public Pokemon(String nome,int hp, Ataque ataques[]){
+	public Pokemon(String nome,int hp, Ataque ataque1, Ataque ataque2, Ataque ataque3, Ataque ataque4){
 		this.nome = nome;
 		this.hp = hp;
-		this.ataques = new Ataque[4];
+		this.hpMax = hp;
+		this.ataques[0] = ataque1;
+		this.ataques[1] = ataque2;
+		this.ataques[2] = ataque3;
+		this.ataques[3] = ataque4;
 	}
 	public int getHp(){
 		return hp;

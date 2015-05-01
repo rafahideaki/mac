@@ -4,6 +4,10 @@ public class Item {
 	private int cura;
 	
 	
+	public String getNome(){
+		return this.nome;
+	}
+	
 	public Item(String nome, int cura){
 		this.nome = nome;
 		this.cura = cura;

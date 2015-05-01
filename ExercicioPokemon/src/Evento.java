@@ -1,8 +1,18 @@
+import java.util.Scanner;
+
 
 public class Evento {
 	private boolean fim = false;
 	private int acao1,acao2;
 	private int ataque1, ataque2;
+	
+	public static int leTeclado() {
+		int numero;
+		Scanner sc1 = new Scanner(System.in);
+		numero = sc1.nextInt();
+		sc1.close();
+		return numero;
+	}
 	
 	public void finalizaBatalha() {
 		this.fim = true;
@@ -54,6 +64,20 @@ public class Evento {
 			looser.getListaPok()[num].AtivaPokemon();
 			return false;
 		}
+	}
+	
+	
+	public static void main(String[] args){
+		Evento batalha = new Evento();
+		Listas lista = new Listas();
+		System.out.println("Trainer 1,Choose 6 pokemon !");
+		lista.mostraListaPokemon();
+		batalha.modificaAcao1(leTeclado());
+		System.out.println("Trainer 2,Choose 6 pokemon");
+		lista.mostraListaPokemon();
+		batalha.modificaAcao2(leTeclado());
+		
+		
 	}
 
 	

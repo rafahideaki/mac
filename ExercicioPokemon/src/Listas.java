@@ -146,6 +146,7 @@ public class Listas {
 	/* 27 */Dragonite,
 	/* 28 */Mewtwo,
 	/* 29 */Mew };
+	
 	static Item[] listaItens = new Item[] {
 	/* 0 */HyperPotion,
 	/* 1 */SuperPotion,
@@ -207,15 +208,11 @@ public class Listas {
 			System.out.println("(" + i + ") " + listaPok[i].getNome());
 	}
 
-	public static void mostraListaItens(Item[] listaItem) {
+	public void mostraListaItens(Item[] listaItem) {
 		int i;
 		for (i = 0; i < listaItem.length && listaItem[i] != null; i++) {
 			System.out.println(listaItem[i].getNome());
 		}
 	}
 
-	public static void main(String[] args) {
-		Listas lista = new Listas();
-		System.out.println("Chegou");
-	}
 }

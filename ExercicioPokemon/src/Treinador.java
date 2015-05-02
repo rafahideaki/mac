@@ -21,6 +21,7 @@ public class Treinador {
 	public void trocaPokemon(Pokemon ativo, Pokemon novo){
 		ativo.DesativaPokemon();
 		novo.AtivaPokemon();
+		System.out.println(this.getNome() + " changed the pokemon: "+ ativo.getNome() + "->" + novo.getNome());
 	}
 	
 	
@@ -33,8 +34,11 @@ public class Treinador {
 	}
 	
 	public void escolheAtaque(Pokemon pokemon){
-		System.out.println("Escolha seu ataque: " + pokemon.mostraAtaques());
-		
+		System.out.println("Choose your move: " + pokemon.mostraAtaques());
+	}
+	public void escolheItem(){
+		System.out.println("Choose your item: (1) " + Listas.HyperPotion.getNome() + " (2) " + Listas.SuperPotion.getNome()+
+							" (3) " + Listas.Potion.getNome()  + " (4) " + Listas.FullRestore.getNome());
 	}
 	
 	public int getNumPokemon(){
@@ -54,8 +58,6 @@ public class Treinador {
 	}
 	
 	public String mostraPokemon(){
-		System.out.println("Chegou");
-		System.out.println(this.numPok);
 		String lista;
 		if (this.numPok == 1){
 			lista = ("(1)" + this.pokemons[0].getNome());

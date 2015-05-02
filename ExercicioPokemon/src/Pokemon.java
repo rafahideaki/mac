@@ -19,6 +19,10 @@ public class Pokemon {
 		return hp;
 	}
 	
+	public Ataque[] getAtaques(){
+		return ataques;
+	}
+	
 	public void AumentaHp(int cura){
 		this.hp += cura;
 	}
@@ -40,8 +44,8 @@ public class Pokemon {
 	}
 	
 	public String mostraAtaques(){
-		String lista = ("(1)" + this.ataques[0] + " / (2) " + this.ataques[1] +
-				        " / (3) " + this.ataques[2] + " / (4) " + this.ataques[3]);
+		String lista = ("(1)" + this.ataques[0].getNome() + " / (2) " + this.ataques[1].getNome() +
+				        " / (3) " + this.ataques[2].getNome() + " / (4) " + this.ataques[3].getNome());
 		return lista;
 	}
 	

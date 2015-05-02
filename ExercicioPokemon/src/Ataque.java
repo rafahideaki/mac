@@ -20,6 +20,10 @@ public class Ataque {
 		return this.prioridade;
 	}
 	
+	public String getNome(){
+		return this.nome;
+	}
+	
 
 
 }

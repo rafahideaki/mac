@@ -16,36 +16,36 @@ public class Evento {
 	}
 	
 	public void finalizaBatalha() {
-		this.fim = true;
+		Evento.fim = true;
 	}
 	
 	public void modificaAcao1(int escolha){
-		this.acao1 = escolha;
+		Evento.acao1 = escolha;
 	}
 	
 	public void modificaAcao2(int escolha){
-		this.acao2 = escolha;
+		Evento.acao2 = escolha;
 	}
 	
 	public void realizaAtaques (Ataque ataque1, Ataque ataque2,Pokemon pokemon1, 
 			                    Pokemon pokemon2,Treinador treinador1, Treinador treinador2){
 		
 		if (ataque1.getPrioridade() >= ataque2.getPrioridade()) {
-			ataque1.ataca(pokemon2);
+			ataque1.ataca(pokemon1,pokemon2);
 			if(pokemon2.verificaMorte(treinador2) == true){
-			    fim = this.verificaVitoria(treinador1, treinador2);
+			    fim = Evento.verificaVitoria(treinador1, treinador2);
 			} else {
-				ataque2.ataca(pokemon1);
+				ataque2.ataca(pokemon2,pokemon1);
 				pokemon1.verificaMorte(treinador1);
-				fim = this.verificaVitoria(treinador2, treinador1);
+				fim = Evento.verificaVitoria(treinador2, treinador1);
 			}
 		} 
 		else {
-			ataque2.ataca(pokemon1);
+			ataque2.ataca(pokemon2,pokemon1);
 			if (pokemon1.verificaMorte(treinador1) == true){
-			    fim = this.verificaVitoria(treinador2, treinador1);
+			    fim = Evento.verificaVitoria(treinador2, treinador1);
 			} else {
-				ataque1.ataca(pokemon2);
+				ataque1.ataca(pokemon1,pokemon2);
 				pokemon2.verificaMorte(treinador2);
 				fim = Evento.verificaVitoria(treinador1, treinador2);
 			}
@@ -212,13 +212,13 @@ public class Evento {
 											ativo1, ativo2, treinador1, treinador2);
 				}
 				if (acao1 == 1 && acao2 != 1){
-					ativo1.getAtaques()[Evento.ataque1].ataca(ativo2);
+					ativo1.getAtaques()[Evento.ataque1].ataca(ativo1,ativo2);
 					if(ativo2.verificaMorte(treinador2) == true){
 					    Evento.fim = Evento.verificaVitoria(treinador1, treinador2);
 					}
 				}
-				if (acao2 == 1 && acao1 != 1){
-					ativo2.getAtaques()[Evento.ataque2].ataca(ativo1);
+				if (acao2 == 1 && acao1 != 1 && !ativo1.verificaMorte(treinador2)){
+					ativo2.getAtaques()[Evento.ataque2].ataca(ativo2,ativo1);
 					if(ativo1.verificaMorte(treinador1) == true){
 					    Evento.fim = Evento.verificaVitoria(treinador2, treinador1);
 					}

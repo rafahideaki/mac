@@ -20,7 +20,7 @@ public class Listas {
 	static Ataque HydroPump = new Ataque(120, 4, "Hydro Pump");
 	static Ataque WaterGun = new Ataque(40, 2, "Water Gun");
 	static Ataque Splash = new Ataque(0, 1000000, "Splash");
-	static Ataque MagicalLeaf = new Ataque(60, 2, "MagicalLeaf");
+	static Ataque MagicalLeaf = new Ataque(60, 2, "Magical Leaf");
 	static Ataque PetalDance = new Ataque(70, 3, "Petal Dance");
 	static Ataque SolarBeam = new Ataque(120, 1, "Solar Beam");
 	static Ataque WingAttack = new Ataque(60, 3, "Wing Atack");

@@ -11,9 +11,9 @@ public class Ataque {
 	}
 	
 	
-	public void ataca(Pokemon adversario){
+	public void ataca(Pokemon ativo,Pokemon adversario){
 		adversario.DiminuiHp(this.dano);
-		System.out.println(adversario.getNome() + " used "+this.nome+ "!");
+		System.out.println(ativo.getNome() + " used "+this.nome+ "!");
 	}
 	
 	public int getPrioridade(){

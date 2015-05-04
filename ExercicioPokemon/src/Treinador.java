@@ -7,6 +7,7 @@ public class Treinador {
 	private Item itens[] = new Item[4];
 	private int numPok;
 	private int ownPok;
+	private int posicaox = 0, posicaoy = 0;
 	
 	
 	
@@ -66,6 +67,14 @@ public class Treinador {
 	
 	public Pokemon[] getListaPok(){
 		return this.pokemons;
+	}
+	
+	public int getPosicaoX(){
+		return this.posicaox;
+	}
+	
+	public int getPosicaoY() {
+		return this.posicaoy;
 	}
 	
 	

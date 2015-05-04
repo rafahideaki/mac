@@ -129,7 +129,9 @@ public class Evento {
 		}
 	}
 
+
 	public static void main(String[] args) {
+
 		Evento batalha = new Evento();
 		Pokemon ativo1, ativo2;
 		int novo1 = 0, novo2 = 0, item1 = 0, item2 = 0;

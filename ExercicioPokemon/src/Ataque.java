@@ -16,10 +16,11 @@ public class Ataque {
 		this.tipo = tipo;
 	}
 	
-	
+
 	
 	public void ataca(Pokemon ativo,Pokemon adversario){
 		adversario.DiminuiHp(dano, adversario, tipo);
+
 		System.out.println(ativo.getNome() + " used "+this.nome+ "!");
 	}
 	
@@ -32,7 +33,7 @@ public class Ataque {
 	public String getNome(){
 		return this.nome;
 	}
-	
+
 	public String getTipo(){
 		return this.tipo;
 	}

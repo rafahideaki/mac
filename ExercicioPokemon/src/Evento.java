@@ -82,7 +82,7 @@ public class Evento {
 		
 	public Treinador pegaDados(){
 		String texto,nome;
-		
+
 		System.out.println("What's your name?: ");
 		nome = sc.nextLine();
 		System.out.println(nome + ",Choose 6 pokemon!");

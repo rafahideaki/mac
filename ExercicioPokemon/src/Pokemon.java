@@ -32,6 +32,10 @@ public class Pokemon {
 		return ataques;
 	}
 	
+	public void AumentaHp(int cura){
+		this.hp += cura;
+	}
+	
 	public String getNome(){
 		return nome;
 	}

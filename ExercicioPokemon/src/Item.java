@@ -25,9 +25,10 @@ public class Item {
 		System.out.println(pokemon.getNome()+"'s HP was restored by "+pt_cura+" point(s).");
 	}
 	
-	
+
 	
 	public String getNome(){
 		return this.nome;
 	}
 }
+

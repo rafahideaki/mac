@@ -2,7 +2,7 @@
 
 
 public class Ataque {
-	private int dano;
+	private int dano;    
 	private int prioridade;
 	private String nome;
 	private String tipo;

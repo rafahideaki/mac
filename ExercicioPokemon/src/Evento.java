@@ -131,6 +131,9 @@ public class Evento {
 
 
 	public static void main(String[] args){
+		Mapa mapa = new Mapa();
+		mapa.mostraMapa(3, 4);
+		
 		Evento batalha = new Evento();
 		Pokemon ativo1,ativo2;
 		int novo1 = 0,novo2 = 0,item1 = 0,item2 = 0;

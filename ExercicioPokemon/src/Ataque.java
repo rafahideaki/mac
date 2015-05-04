@@ -19,9 +19,10 @@ public class Ataque {
 
 	
 	public void ataca(Pokemon ativo,Pokemon adversario){
-		adversario.DiminuiHp(dano, adversario, tipo);
-
 		System.out.println(ativo.getNome() + " used "+this.nome+ "!");
+		adversario.DiminuiHp(dano, adversario, tipo);
+		
+
 	}
 	
 	

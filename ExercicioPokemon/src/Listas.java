@@ -146,7 +146,7 @@ public class Listas {
 	/* 27 */Dragonite,
 	/* 28 */Mewtwo,
 	/* 29 */Mew };
-	
+	 
 	static Item[] listaItens = new Item[] {
 	/* 0 */HyperPotion,
 	/* 1 */SuperPotion,

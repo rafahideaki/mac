@@ -167,12 +167,12 @@ public class Evento {
 				System.out.println(treinador1.getNome()
 						+ ", choose the pokemon to heal: ");
 				treinador1.mostraPokemon();
-				novo1 = sc.nextInt();
+				novo1 = sc.nextInt() -1;
 			} else if (Evento.acao1 == 3) {
 				System.out.println(treinador1.getNome()
 						+ ", choose another pokemon to battle: ");
 				treinador1.mostraPokemon();
-				novo1 = sc.nextInt();
+				novo1 = sc.nextInt() -1;
 			} else {
 				batalha.finalizaBatalha();
 			}
@@ -193,12 +193,12 @@ public class Evento {
 				System.out.println(treinador2.getNome()
 						+ ", choose the pokemon to heal: ");
 				treinador2.mostraPokemon();
-				novo2 = sc.nextInt();
+				novo2 = sc.nextInt()-1;
 			} else if (Evento.acao2 == 3) {
 				System.out.println(treinador2.getNome()
 						+ ", choose another pokemon to battle: ");
 				treinador2.mostraPokemon();
-				novo2 = sc.nextInt();
+				novo2 = sc.nextInt()-1;
 				treinador2
 						.trocaPokemon(ativo2, treinador2.getListaPok()[novo2]);
 			} else {

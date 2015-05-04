@@ -72,14 +72,14 @@ public class Pokemon {
 	public void DiminuiHp(int dano, Pokemon pokemon, String tipoAtaque){
 		int dano_total;
 		if(pokemon.getTipo2() == " "){
-			dano_total = (int)((float)dano*this.identificaFraqueza1(pokemon, tipoAtaque));
+			dano_total = (int)(dano*this.identificaFraqueza1(pokemon, tipoAtaque));
 			if (identificaFraqueza1(pokemon, tipoAtaque) == 2){
 				System.out.println("It's super effective!");
 			}
 			if (identificaFraqueza1(pokemon, tipoAtaque) == 1/2){
 				System.out.println("It's not very effective...");
 			}
-		} else{ dano_total = (int)((float)dano*this.identificaFraqueza1(pokemon, tipoAtaque)*(float)this.identificaFraqueza2(pokemon, tipoAtaque));
+		} else{ dano_total = (int)((dano*this.identificaFraqueza1(pokemon, tipoAtaque)*this.identificaFraqueza2(pokemon, tipoAtaque)));
 		    if (identificaFraqueza1(pokemon, tipoAtaque) == 2 || identificaFraqueza2(pokemon, tipoAtaque) == 2){
 			    System.out.println("It's super effective!");
 		    }
@@ -121,11 +121,11 @@ public class Pokemon {
 	
 	
 	
-	public int identificaFraqueza1(Pokemon pokemon, String ataque){
+	public double identificaFraqueza1(Pokemon pokemon, String ataque){
 			
 		if (ataque == "Normal"){
 			if (pokemon.getTipo() == "Rock" || pokemon.getTipo() == "Steel"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo() == "Ghost"){
 				return 0;
 			} else {
@@ -139,7 +139,7 @@ public class Pokemon {
 				return 2;	
 			} else if (pokemon.getTipo() == "Flying" || pokemon.getTipo() == "Poison" || pokemon.getTipo() == "Bug"
 					                                 || pokemon.getTipo() == "Psychic" || pokemon.getTipo() == "Fairy"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo() == "Ghost"){
 				return 0;
 			} else {
@@ -151,7 +151,7 @@ public class Pokemon {
 			if (pokemon.getTipo() == "Fighting" || pokemon.getTipo() == "Bug" || pokemon.getTipo() == "Grass"){
 				return 2;	
 			} else if (pokemon.getTipo() == "Rock" || pokemon.getTipo() == "Steel" || pokemon.getTipo() == "Electric"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -162,7 +162,7 @@ public class Pokemon {
 				return 2;	
 			} else if (pokemon.getTipo() == "Poison" || pokemon.getTipo() == "Ground" || pokemon.getTipo() == "Rock"
 					                                 || pokemon.getTipo() == "Ghost"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo() == "Steel"){
 				return 0;
 			} else {
@@ -175,7 +175,7 @@ public class Pokemon {
 					                          || pokemon.getTipo() == "Fire" || pokemon.getTipo() == "Electric"){
 				return 2;	
 			} else if (pokemon.getTipo() == "Bug" || pokemon.getTipo() == "Grass"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo() == "FLying"){
 				return 0;
 			} else {
@@ -188,7 +188,7 @@ public class Pokemon {
 					                          || pokemon.getTipo() == "Ice"){
 				return 2;	
 			} else if (pokemon.getTipo() == "Fighting" || pokemon.getTipo() == "Ground" || pokemon.getTipo() == "Steel"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -200,7 +200,7 @@ public class Pokemon {
 			} else if (pokemon.getTipo() == "Fighting" || pokemon.getTipo() == "Flying" || pokemon.getTipo() == "Poison"
 					                                   || pokemon.getTipo() == "Ghost" || pokemon.getTipo() == "Steel"
 					                                   || pokemon.getTipo() == "Fire" || pokemon.getTipo() == "Fairy"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -210,7 +210,7 @@ public class Pokemon {
 			if (pokemon.getTipo() == "Ghost" || pokemon.getTipo() == "Psychic"){
 				return 2;	
 			} else if (pokemon.getTipo() == "Dark"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo() == "Normal"){
 				return 0;
 			} else {
@@ -223,7 +223,7 @@ public class Pokemon {
 				return 2;	
 			} else if (pokemon.getTipo() == "Steel" || pokemon.getTipo() == "Fire" || pokemon.getTipo() == "Water" 
 					                                || pokemon.getTipo() == "Electric"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -235,7 +235,7 @@ public class Pokemon {
 				return 2;	
 			} else if (pokemon.getTipo() == "Rock" || pokemon.getTipo() == "Fire" || pokemon.getTipo() == "Water"
 					                               || pokemon.getTipo() == "Dragon"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -245,7 +245,7 @@ public class Pokemon {
 			if (pokemon.getTipo() == "Ground" || pokemon.getTipo() == "Rock" || pokemon.getTipo() == "Fire"){
 				return 2;	
 			} else if (pokemon.getTipo() == "Water" || pokemon.getTipo() == "Grass" || pokemon.getTipo() == "Dragon"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -257,7 +257,7 @@ public class Pokemon {
 			} else if (pokemon.getTipo() == "Flying" || pokemon.getTipo() == "Poison" || pokemon.getTipo() == "Bug"
 					                                 || pokemon.getTipo() == "Stell" || pokemon.getTipo() == "Fire"
 					                                 || pokemon.getTipo() == "Grass" || pokemon.getTipo() == "Dragon"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -267,7 +267,7 @@ public class Pokemon {
 			if (pokemon.getTipo() == "Flying" || pokemon.getTipo() == "Water"){
 				return 2;	
 			} else if (pokemon.getTipo() == "Grass" || pokemon.getTipo() == "Electric" || pokemon.getTipo() == "Dragon")
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo() == "Ground"){
 				return 0;
 			} else {
@@ -278,7 +278,7 @@ public class Pokemon {
 			if (pokemon.getTipo() == "Fighting" || pokemon.getTipo() == "Poison"){
 				return 2;	
 			} else if (pokemon.getTipo() == "Steel" || pokemon.getTipo() == "Psychic")
-				return 1/2;
+				return 0.5;
 	        } else if (pokemon.getTipo() == "Dark"){
 				return 0;
 			} else {
@@ -291,7 +291,7 @@ public class Pokemon {
 				return 2;	
 			} else if (pokemon.getTipo() == "Steel" || pokemon.getTipo() == "Fire" || pokemon.getTipo() == "Water"
 					                                 || pokemon.getTipo() == "Ice"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -301,7 +301,7 @@ public class Pokemon {
 			if (pokemon.getTipo() == "Dragon"){
 				return 2;	
 			} else if (pokemon.getTipo() == "Steel"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo() == "Fairy"){
 				return 0;
 			} else {
@@ -313,7 +313,7 @@ public class Pokemon {
 			if (pokemon.getTipo() == "Ghost" || pokemon.getTipo() == "Psychic"){
 				return 2;	
 			} else if (pokemon.getTipo() == "Fighting" || pokemon.getTipo() == "Dark" || pokemon.getTipo() == "Fairy"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -323,7 +323,7 @@ public class Pokemon {
 			if (pokemon.getTipo() == "Fighting" || pokemon.getTipo() == "Dragon" || pokemon.getTipo() == "Dark"){
 				return 2;	
 			} else if (pokemon.getTipo() == "Poison" || pokemon.getTipo() == "Steel" || pokemon.getTipo() == "Fire"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -335,11 +335,11 @@ public class Pokemon {
 	
 	
 	
-	public int identificaFraqueza2(Pokemon pokemon, String ataque){
+	public double identificaFraqueza2(Pokemon pokemon, String ataque){
 		
 		if (ataque == "Normal"){
 			if (pokemon.getTipo2() == "Rock" || pokemon.getTipo2() == "Steel"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo2() == "Ghost"){
 				return 0;
 			} else {
@@ -353,7 +353,7 @@ public class Pokemon {
 				return 2;	
 			} else if (pokemon.getTipo2() == "Flying" || pokemon.getTipo2() == "Poison" || pokemon.getTipo2() == "Bug"
 					                                 || pokemon.getTipo2() == "Psychic" || pokemon.getTipo2() == "Fairy"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo2() == "Ghost"){
 				return 0;
 			} else {
@@ -365,7 +365,7 @@ public class Pokemon {
 			if (pokemon.getTipo2() == "Fighting" || pokemon.getTipo2() == "Bug" || pokemon.getTipo2() == "Grass"){
 				return 2;	
 			} else if (pokemon.getTipo2() == "Rock" || pokemon.getTipo2() == "Steel" || pokemon.getTipo2() == "Electric"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -376,7 +376,7 @@ public class Pokemon {
 				return 2;	
 			} else if (pokemon.getTipo2() == "Poison" || pokemon.getTipo2() == "Ground" || pokemon.getTipo2() == "Rock"
 					                                 || pokemon.getTipo2() == "Ghost"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo2() == "Steel"){
 				return 0;
 			} else {
@@ -389,7 +389,7 @@ public class Pokemon {
 					                          || pokemon.getTipo2() == "Fire" || pokemon.getTipo2() == "Electric"){
 				return 2;	
 			} else if (pokemon.getTipo2() == "Bug" || pokemon.getTipo2() == "Grass"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo2() == "FLying"){
 				return 0;
 			} else {
@@ -402,7 +402,7 @@ public class Pokemon {
 					                          || pokemon.getTipo2() == "Ice"){
 				return 2;	
 			} else if (pokemon.getTipo2() == "Fighting" || pokemon.getTipo2() == "Ground" || pokemon.getTipo2() == "Steel"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -414,7 +414,7 @@ public class Pokemon {
 			} else if (pokemon.getTipo2() == "Fighting" || pokemon.getTipo2() == "Flying" || pokemon.getTipo2() == "Poison"
 					                                   || pokemon.getTipo2() == "Ghost" || pokemon.getTipo2() == "Steel"
 					                                   || pokemon.getTipo2() == "Fire" || pokemon.getTipo2() == "Fairy"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -424,7 +424,7 @@ public class Pokemon {
 			if (pokemon.getTipo2() == "Ghost" || pokemon.getTipo2() == "Psychic"){
 				return 2;	
 			} else if (pokemon.getTipo2() == "Dark"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo2() == "Normal"){
 				return 0;
 			} else {
@@ -437,7 +437,7 @@ public class Pokemon {
 				return 2;	
 			} else if (pokemon.getTipo2() == "Steel" || pokemon.getTipo2() == "Fire" || pokemon.getTipo2() == "Water" 
 					                                || pokemon.getTipo2() == "Electric"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -449,7 +449,7 @@ public class Pokemon {
 				return 2;	
 			} else if (pokemon.getTipo2() == "Rock" || pokemon.getTipo2() == "Fire" || pokemon.getTipo2() == "Water"
 					                               || pokemon.getTipo2() == "Dragon"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -459,7 +459,7 @@ public class Pokemon {
 			if (pokemon.getTipo2() == "Ground" || pokemon.getTipo2() == "Rock" || pokemon.getTipo2() == "Fire"){
 				return 2;	
 			} else if (pokemon.getTipo2() == "Water" || pokemon.getTipo2() == "Grass" || pokemon.getTipo2() == "Dragon"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -471,7 +471,7 @@ public class Pokemon {
 			} else if (pokemon.getTipo2() == "Flying" || pokemon.getTipo2() == "Poison" || pokemon.getTipo2() == "Bug"
 					                                 || pokemon.getTipo2() == "Stell" || pokemon.getTipo2() == "Fire"
 					                                 || pokemon.getTipo2() == "Grass" || pokemon.getTipo2() == "Dragon"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -481,7 +481,7 @@ public class Pokemon {
 			if (pokemon.getTipo2() == "Flying" || pokemon.getTipo2() == "Water"){
 				return 2;	
 			} else if (pokemon.getTipo2() == "Grass" || pokemon.getTipo2() == "Electric" || pokemon.getTipo2() == "Dragon")
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo2() == "Ground"){
 				return 0;
 			} else {
@@ -492,7 +492,7 @@ public class Pokemon {
 			if (pokemon.getTipo2() == "Fighting" || pokemon.getTipo2() == "Poison"){
 				return 2;	
 			} else if (pokemon.getTipo2() == "Steel" || pokemon.getTipo2() == "Psychic")
-				return 1/2;
+				return 0.5;
 	        } else if (pokemon.getTipo2() == "Dark"){
 				return 0;
 			} else {
@@ -505,7 +505,7 @@ public class Pokemon {
 				return 2;	
 			} else if (pokemon.getTipo2() == "Steel" || pokemon.getTipo2() == "Fire" || pokemon.getTipo2() == "Water"
 					                                 || pokemon.getTipo2() == "Ice"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -515,7 +515,7 @@ public class Pokemon {
 			if (pokemon.getTipo2() == "Dragon"){
 				return 2;	
 			} else if (pokemon.getTipo2() == "Steel"){
-				return 1/2;
+				return 0.5;
 			} else if (pokemon.getTipo2() == "Fairy"){
 				return 0;
 			} else {
@@ -527,7 +527,7 @@ public class Pokemon {
 			if (pokemon.getTipo2() == "Ghost" || pokemon.getTipo2() == "Psychic"){
 				return 2;	
 			} else if (pokemon.getTipo2() == "Fighting" || pokemon.getTipo2() == "Dark" || pokemon.getTipo2() == "Fairy"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}
@@ -537,7 +537,7 @@ public class Pokemon {
 			if (pokemon.getTipo2() == "Fighting" || pokemon.getTipo2() == "Dragon" || pokemon.getTipo2() == "Dark"){
 				return 2;	
 			} else if (pokemon.getTipo2() == "Poison" || pokemon.getTipo2() == "Steel" || pokemon.getTipo2() == "Fire"){
-				return 1/2;
+				return 0.5;
 			} else {
 				return 1;
 			}

@@ -59,7 +59,10 @@ public class Pokemon {
 	
 	public void DiminuiHp(int dano, Pokemon pokemon, String tipoAtaque){
 		int dano_total;
-		dano_total = dano*this.identificaFraqueza1(pokemon, tipoAtaque)*this.identificaFraqueza2(pokemon, tipoAtaque);
+		if(pokemon.getTipo2() == " "){
+			dano_total = dano*this.identificaFraqueza1(pokemon, tipoAtaque);
+		} else{ dano_total = dano*this.identificaFraqueza1(pokemon, tipoAtaque)*this.identificaFraqueza2(pokemon, tipoAtaque);
+		}
 		this.hp -= dano_total;
 		if (hp < 0){
 			hp = 0;

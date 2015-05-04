@@ -12,7 +12,7 @@ public class Evento {
 		Scanner sc1 = new Scanner(System.in);
 		numero = sc1.nextInt();
 		sc1.close();
-		return numero;
+		return numero; 
 	}
 	
 	public void finalizaBatalha() {

@@ -20,4 +20,4 @@ public class LeTeclado {
 		A.close();
 		return texto;
 	}
-}
+} 

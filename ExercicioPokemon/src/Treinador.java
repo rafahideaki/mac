@@ -15,7 +15,7 @@ public class Treinador {
 		this.itens = itens;
 		this.numPok = numPok;
 	}
-	
+	 
 	
 	
 	public void fugir(Evento batalha){

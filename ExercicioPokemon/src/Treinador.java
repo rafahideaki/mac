@@ -6,6 +6,7 @@ public class Treinador {
 	private Pokemon pokemons[]= new Pokemon[6];
 	private Item itens[] = new Item[4];
 	private int numPok;
+	private int ownPok;
 	
 	
 	
@@ -14,6 +15,7 @@ public class Treinador {
 		this.pokemons = pokemons;
 		this.itens = itens;
 		this.numPok = numPok;
+		this.ownPok = numPok;
 	}
 	 
 	
@@ -70,17 +72,17 @@ public class Treinador {
 	
 	public String mostraPokemon(){
 		String lista;
-		if (this.numPok == 1){
+		if (this.ownPok == 1){
 			lista = ("(1)" + this.pokemons[0].getNome());
-		} else if (this.numPok == 2){
+		} else if (this.ownPok == 2){
 			lista = ("(1)" + this.pokemons[0].getNome() + " / (2) " + this.pokemons[1].getNome());
-		} else if (this.numPok == 3){
+		} else if (this.ownPok == 3){
 			lista = ("(1)" + this.pokemons[0].getNome() + " / (2) " + this.pokemons[1].getNome() +
 		        	" / (3) " + this.pokemons[2].getNome());
-		} else if (this.numPok == 4){
+		} else if (this.ownPok == 4){
 			lista = ("(1)" + this.pokemons[0].getNome() + " / (2) " + this.pokemons[1].getNome() +
 		        	" / (3) " + this.pokemons[2].getNome() + " / (4) " + this.pokemons[3].getNome());
-		} else if (this.numPok == 5){
+		} else if (this.ownPok == 5){
 			lista = ("(1)" + this.pokemons[0].getNome() + " / (2) " + this.pokemons[1].getNome() +
 		        	" / (3) " + this.pokemons[2].getNome() + " / (4) " + this.pokemons[3].getNome() +
 		        	" / (5) " + this.pokemons[4].getNome());

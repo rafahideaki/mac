@@ -47,6 +47,7 @@ public class Mapa {
 		}
 
 		System.out.println("");
+		System.out.println("");
 	}
 	
 	public boolean achaPokemon(){

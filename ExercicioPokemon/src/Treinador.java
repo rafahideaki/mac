@@ -42,6 +42,7 @@ public class Treinador {
 	
 	
 	
+	
 	public void escolheAtaque(Pokemon pokemon){
 		System.out.println("Choose your move: " + pokemon.mostraAtaques());
 	}
@@ -75,6 +76,38 @@ public class Treinador {
 	
 	public int getPosicaoY() {
 		return this.posicaoy;
+	}
+	
+	public void andaDireita(){
+		if (this.posicaox < 13) {
+			this.posicaox ++;
+		} else {
+			System.out.println("You cannot do this!");
+		}
+	}
+	
+	public void andaEsquerda(){
+		if (this.posicaox > 0) {
+			this.posicaox --;
+		} else {
+			System.out.println("You cannot do this!");
+		}
+	}
+	
+	public void andaBaixo() {
+		if (this.posicaoy < 14) {
+			this.posicaoy ++;
+		} else {
+			System.out.println("You cannot do this!");
+		}
+	}
+	
+	public void andaCima() {
+		if (this.posicaoy > 0) {
+			this.posicaoy --;
+		} else {
+			System.out.println("You cannot do this!");
+		}
 	}
 	
 	

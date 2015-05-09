@@ -87,7 +87,7 @@ public class Evento {
 		System.out.println("What's your name?: ");
 		nome = sc.nextLine();
 		System.out.println(nome + ",Choose 6 pokemon!");
-		Listas.mostraListaPokemon(Listas.listaPokemons);
+		Listas.mostraListaCompleta();
 		texto = sc.nextLine();
 		int listaInteiros[] = this.stringParaListaInteiros(texto);
 		Pokemon[] listaPokTreinador = new Pokemon[6];
@@ -130,12 +130,10 @@ public class Evento {
 	}
 
 	public static void main(String[] args) {
-		int escolha;
 		String texto;
+		int escolha;
 		Evento batalha = new Evento();
-		
-		
-		
+
 		System.out.println("What do you want to play ?");
 		System.out.println("(1) Single Player");
 		System.out.println("(2) Multi Player");
@@ -143,41 +141,119 @@ public class Evento {
 
 		if (escolha == 1) {
 			Mapa matriz = new Mapa();
-			Treinador treinador1 = batalha.pegaDados();
-			matriz.mostraMapa(0, 0);
-			System.out.println("What do you want to do ?");
-			System.out.println("    +---+");
-			System.out.println("    | W |    ");
-			System.out.println("+---+---+---+");
-			System.out.println("| A | S | D |");
-			System.out.println("+---+---+---+");
 			texto = sc.nextLine();
-			if (texto == "A" || texto == "a"){
-				treinador1.andaEsquerda();
-			}
-			if (texto == "S" || texto == "s"){
-				treinador1.andaBaixo();
-			}
-			if (texto == "D" || texto == "d"){
-				treinador1.andaDireita();
-			}
-			if (texto == "W" || texto == "w"){
-				treinador1.andaCima();
-			}
-			if (matriz.taNoMato(treinador1.getPosicaoX(),treinador1.getPosicaoY())){
-				if (matriz.achaPokemon()){
-					Pokemon selvagem = matriz.definePokemon();
-					Pokemon ativo1;
-					int novo1 = 0,item1 = 0;
-					ativo1 = treinador1.getListaPok()[0];
-					System.out.println("Wild " + selvagem.getNome()+" appeared!");
-					System.out.println("Go! " +ativo1.getNome() + "!");
-					
+			Treinador treinador1 = batalha.pegaDados();
+			while (escolha == 1) {
+				matriz.mostraMapa(treinador1.getPosicaoY(),
+						treinador1.getPosicaoX());
+				System.out.println("What do you want to do ?");
+				System.out.println("    +---+");
+				System.out.println("    | W |    ");
+				System.out.println("+---+---+---+");
+				System.out.println("| A | S | D |");
+				System.out.println("+---+---+---+");
+				texto = sc.nextLine();
+				if (texto.contains("A") || texto.contains("a")) {
+					treinador1.andaEsquerda();
 				}
+				if (texto.contains("S") || texto.contains("s")) {
+					treinador1.andaBaixo();
+				}
+				if (texto.contains("D") || texto.contains("d")) {
+					treinador1.andaDireita();
+				}
+				if (texto.contains("W") || texto.contains("w")) {
+					treinador1.andaCima();
+				}
+				if (matriz.taNoMato(treinador1.getPosicaoX(),
+						treinador1.getPosicaoY())) {
+					if (matriz.achaPokemon()) {
+						matriz.mostraMapa(treinador1.getPosicaoY(),
+								treinador1.getPosicaoX());
+						Pokemon selvagem = matriz.definePokemon();
+						Pokemon listaSelv[] = new Pokemon[] { selvagem };
+						Item listaItem[] = new Item[0];
+
+						Pokemon ativo1;
+						Treinador treinador2 = new Treinador("", listaSelv,
+								listaItem, 1);
+						int novo1 = 0, item1 = 0;
+						int i = 0;
+						while (treinador1.getListaPok()[i].getHp()==0 && i<treinador1.getNumPokemon()){
+							i++;
+						}
+						ativo1 = treinador1.getListaPok()[i];
+						System.out.println("Wild " + selvagem.getNome()
+								+ " appeared!");
+						System.out.println("Go! " + ativo1.getNome() + "!");
+						while (batalha.fim != true) {
+							System.out.println(treinador1.getNome()
+									+ ", What will " + ativo1.getNome() + "("
+									+ ativo1.getHpMax() + "/" + ativo1.getHp()
+									+ ") do ?");
+							System.out
+									.println("(1)FIGHT / (2)BAG / (3)POKEMON / (4)RUN ");
+							Evento.acao1 = sc.nextInt();
+
+							if (Evento.acao1 == 1) {
+								treinador1.escolheAtaque(ativo1);
+								Evento.ataque1 = sc.nextInt() - 1;
+								batalha.realizaAtaques(
+										ativo1.getAtaques()[Evento.ataque1],
+										selvagem.escolheAtaqueAleatório(),
+										ativo1, selvagem, treinador1,
+										treinador2);
+							} else if (Evento.acao1 == 2) {
+								treinador1.escolheItem();
+								item1 = sc.nextInt();
+								if (item1 != 4) {
+									System.out.println(treinador1.getNome()
+											+ ", choose the pokemon to heal: ");
+									treinador1.mostraPokemon();
+									novo1 = sc.nextInt() - 1;
+									Listas.listaItens[item1 - 1]
+											.usar(treinador1.getListaPok()[novo1]);
+								} else if (item1 == 4) {
+									if (Listas.PokeBall.capturaPok(selvagem)) {
+										System.out.println("Gotcha!");
+										System.out.println(selvagem.getNome()
+												+ "was caught!");
+										i = 0;
+										while (treinador1.getListaPok()[i] != null
+												|| i < 7) {
+											i++;
+										}
+										if (i != 7) {
+											treinador1.getListaPok()[i] = selvagem;
+											Listas.FullRestore.usar(selvagem);
+										}
+									} else {
+										System.out.println("Aww!");
+										System.out
+												.println("It appeared to be caught!");
+									}
+
+								}
+
+							} else if (Evento.acao1 == 3) {
+								System.out
+										.println(treinador1.getNome()
+												+ ", choose another pokemon to battle: ");
+								treinador1.mostraPokemon();
+								novo1 = sc.nextInt() - 1;
+								treinador1.trocaPokemon(ativo1,
+										treinador1.getListaPok()[novo1]);
+								ativo1 = treinador1.getListaPok()[novo1];
+							} else {
+								System.out.println("Got away safely!");
+								batalha.finalizaBatalha();
+							}
+						}
+
+					}
+				}
+
 			}
-			
-			
-			
 
 		} else {
 

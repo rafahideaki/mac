@@ -29,6 +29,7 @@ public class Mapa {
 	}
 	
 	public void mostraMapa(int x,int y){
+		int antigo = mapa[x][y];
 		mapa[x][y]=2;
 		int i,j;
 		for (i = 0; i < 15; i++){
@@ -48,6 +49,7 @@ public class Mapa {
 
 		System.out.println("");
 		System.out.println("");
+		mapa[x][y] = antigo;
 	}
 	
 	public boolean achaPokemon(){

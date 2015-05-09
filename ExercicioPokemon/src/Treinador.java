@@ -4,7 +4,7 @@
 public class Treinador {
 	private String nome;
 	private Pokemon pokemons[]= new Pokemon[6];
-	private Item itens[] = new Item[4];
+	private Item itens[] = new Item[5];
 	private int numPok;
 	private int ownPok;
 	private int posicaox = 0, posicaoy = 0;

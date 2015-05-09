@@ -1,3 +1,5 @@
+import java.util.Random;
+
 
 
 
@@ -116,6 +118,13 @@ public class Pokemon {
 		} else {
 			return false;
 		}
+	}
+	
+	public Ataque escolheAtaqueAleatório(){
+		Random gerador = new Random();
+		int numAtaque = gerador.nextInt(4);
+		return this.ataques[numAtaque];
+		
 	}
 	
 	

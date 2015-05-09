@@ -1,3 +1,5 @@
+import java.util.Random;
+
 
 
 
@@ -23,6 +25,16 @@ public class Item {
 		}
 		pokemon.AumentaHp(this.cura);
 		System.out.println(pokemon.getNome()+"'s HP was restored by "+pt_cura+" point(s).");
+	}
+	
+	public boolean capturaPok(Pokemon pokemon){
+		Random gerador = new Random();
+		int numRandom = gerador.nextInt(101);
+		if(numRandom > (100-(pokemon.getHp()/pokemon.getHpMax())*100)){
+			return false;
+		} else {
+			return true;
+		}
 	}
 	
 

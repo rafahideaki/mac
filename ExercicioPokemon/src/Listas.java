@@ -114,6 +114,7 @@ public class Listas {
 	static Item SuperPotion = new Item("SuperPotion", 150);
 	static Item Potion = new Item("Potion", 50);
 	static Item FullRestore = new Item("Full Restore", 403849);
+	static Item PokeBall = new Item("Poké Ball",0);
 
 	static Pokemon[] listaPokemons = {
 	/* 0 */Charmander,
@@ -146,12 +147,16 @@ public class Listas {
 	/* 27 */Dragonite,
 	/* 28 */Mewtwo,
 	/* 29 */Mew };
+	
+	
+	
 	 
 	static Item[] listaItens = new Item[] {
 	/* 0 */HyperPotion,
 	/* 1 */SuperPotion,
 	/* 2 */Potion,
-	/* 3 */FullRestore };
+	/* 3 */FullRestore,
+	/* 4 */PokeBall};
 
 	static Ataque[] listaAtaques = new Ataque[] {
 	/* 0 */Ember,
@@ -206,6 +211,20 @@ public class Listas {
 		int i;
 		for (i = 0; i < listaPok.length; i++)
 			System.out.println("(" + i + ") " + listaPok[i].getNome());
+	}
+	
+	public static void mostraListaCompleta(){
+		System.out.println("+---------------+---------------+---------------+---------------+---------------+---------------+");
+		System.out.println("|(0) Charmander |(1) Squirtle   |(2) Bulbasaur  |(3) Charizard  |(4) Blastoise  |(5) Venusaur   |");
+		System.out.println("+---------------+---------------+---------------+---------------+---------------+---------------+");
+		System.out.println("|(6) Pidgeotto  |(7) Fearow     |(8) Pikachu    |(9) Nidoking   |(10) Dugtrio   |(11) Psyduck   |");
+		System.out.println("+---------------+---------------+---------------+---------------+---------------+---------------+");
+		System.out.println("|(12) Arcanine  |(13) Alakazam  |(14) Machamp   |(15) Graveler  |(16) Magnemite |(17) Dodrio    |");
+		System.out.println("+---------------+---------------+---------------+---------------+---------------+---------------+");
+		System.out.println("|(18) Dewgong   |(19) Onix      |(20) Eletrode  |(21) Hitmonchan|(22) Rhydon    |(23) Electabuzz|");
+		System.out.println("+---------------+---------------+---------------+---------------+---------------+---------------+");
+		System.out.println("|(24) Magmar    |(25) Magikarp  |(26) Gyarados  |(27) Dragonite |(28) Mewtwo    |(29) Mew       |");
+		System.out.println("+---------------+---------------+---------------+---------------+---------------+---------------+");
 	}
 
 	public void mostraListaItens(Item[] listaItem) {

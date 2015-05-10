@@ -47,9 +47,17 @@ public class Treinador {
 		System.out.println("Choose your move: " + pokemon.mostraAtaques());
 	}
 	
-	public void escolheItem(){
-		System.out.println("Choose your item: (1) " + Listas.HyperPotion.getNome() + " (2) " + Listas.SuperPotion.getNome()+
-							" (3) " + Listas.Potion.getNome()  + " (4) " + Listas.FullRestore.getNome());
+	public void escolheItem(int tipoBatalha){
+		if (tipoBatalha == 1){
+			System.out.println("Choose your item: (1) " + Listas.HyperPotion.getNome() + " (2) " + Listas.SuperPotion.getNome()+
+								" (3) " + Listas.Potion.getNome()  + " (4) " + Listas.FullRestore.getNome()+
+								" (5) " + Listas.PokeBall.getNome());
+
+		}
+		if (tipoBatalha == 2){
+			System.out.println("Choose your item: (1) " + Listas.HyperPotion.getNome() + " (2) " + Listas.SuperPotion.getNome()+
+								" (3) " + Listas.Potion.getNome()  + " (4) " + Listas.FullRestore.getNome());
+		}
 	}
 	
 	public void diminuiNumPokemon(){
@@ -79,7 +87,7 @@ public class Treinador {
 	}
 	
 	public void andaDireita(){
-		if (this.posicaox < 13) {
+		if (this.posicaox < 21) {
 			this.posicaox ++;
 		} else {
 			System.out.println("You cannot do this!");

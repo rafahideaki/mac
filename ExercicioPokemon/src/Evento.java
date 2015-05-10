@@ -5,6 +5,7 @@ public class Evento {
 	private static boolean fim = false;
 	private static int acao1, acao2;
 	private static int ataque1, ataque2;
+	private static Pokemon ativo1,ativo2;
 
 	public static int leTeclado() {
 		int numero;
@@ -44,6 +45,7 @@ public class Evento {
 			ataque2.ataca(pokemon2, pokemon1);
 			if (pokemon1.verificaMorte(treinador1) == true) {
 				fim = Evento.verificaVitoria(treinador2, treinador1);
+				
 			} else {
 				ataque1.ataca(pokemon1, pokemon2);
 				if (pokemon2.verificaMorte(treinador2) == true) {
@@ -61,8 +63,14 @@ public class Evento {
 			return true;
 		} else {
 			System.out.println(looser.getNome() + ", choose another pokemon: ");
-			System.out.println(looser.mostraPokemon());
-			num = A.leTecladoInteiro();
+			looser.mostraPokemon();
+			num = sc.nextInt()-1;
+			while (looser.getListaPok()[num].getHp() == 0){
+				System.out.println(looser.getListaPok()[num].getNome() + " has no energy left to battle!");
+				System.out.println(looser.getNome() + ", choose another pokemon: ");
+				looser.mostraPokemon();
+				num = sc.nextInt()-1;
+			}
 			looser.getListaPok()[num].AtivaPokemon();
 			return false;
 		}
@@ -133,6 +141,7 @@ public class Evento {
 		String texto;
 		int escolha;
 		Evento batalha = new Evento();
+		Impressoes imp = new Impressoes();
 
 		System.out.println("What do you want to play ?");
 		System.out.println("(1) Single Player");
@@ -174,50 +183,66 @@ public class Evento {
 						Pokemon listaSelv[] = new Pokemon[] { selvagem };
 						Item listaItem[] = new Item[0];
 
-						Pokemon ativo1;
-						Treinador treinador2 = new Treinador("", listaSelv,
+						
+						Treinador treinador2 = new Treinador(selvagem.getNome(), listaSelv,
 								listaItem, 1);
 						int novo1 = 0, item1 = 0;
+						
 						int i = 0;
 						while (treinador1.getListaPok()[i].getHp()==0 && i<treinador1.getNumPokemon()){
 							i++;
 						}
 						ativo1 = treinador1.getListaPok()[i];
-						System.out.println("Wild " + selvagem.getNome()
-								+ " appeared!");
-						System.out.println("Go! " + ativo1.getNome() + "!");
+						ativo1.AtivaPokemon();
+						//System.out.println("Wild " + selvagem.getNome()
+						//		+ " appeared!");
+						//System.out.println("Go! " + ativo1.getNome() + "!");
+						imp.imprimePokemonSelvagem(selvagem);
+						texto = sc.nextLine();
+						imp.imprimePokemonTreinador(ativo1);
+						texto = sc.nextLine();
+						
 						while (batalha.fim != true) {
-							System.out.println(treinador1.getNome()
-									+ ", What will " + ativo1.getNome() + "("
-									+ ativo1.getHpMax() + "/" + ativo1.getHp()
-									+ ") do ?");
-							System.out
-									.println("(1)FIGHT / (2)BAG / (3)POKEMON / (4)RUN ");
+							int k;
+							
+							for (k = 0;treinador1.getListaPok()[k].getAtivo()==false;k++);
+							ativo1 = treinador1.getListaPok()[k];
+							//System.out.println(treinador1.getNome()
+							//		+ ", What will " + Evento.ativo1.getNome() + "("
+							//		+ Evento.ativo1.getHpMax() + "/" + Evento.ativo1.getHp()
+							//		+ ") do ?");
+							//System.out.println("(1)FIGHT / (2)BAG / (3)POKEMON / (4)RUN ");
+							
+							imp.imprimePokemon(ativo1);
+							imp.imprimeOpcoes(ativo1);
 							Evento.acao1 = sc.nextInt();
 
 							if (Evento.acao1 == 1) {
-								treinador1.escolheAtaque(ativo1);
+								//treinador1.escolheAtaque(Evento.ativo1);
+								imp.imprimePokemon(ativo1);
+								imp.imprimeAtaques(ativo1);
+								
 								Evento.ataque1 = sc.nextInt() - 1;
 								batalha.realizaAtaques(
-										ativo1.getAtaques()[Evento.ataque1],
+										Evento.ativo1.getAtaques()[Evento.ataque1],
 										selvagem.escolheAtaqueAleatório(),
 										ativo1, selvagem, treinador1,
 										treinador2);
 							} else if (Evento.acao1 == 2) {
-								treinador1.escolheItem();
+								treinador1.escolheItem(1);
 								item1 = sc.nextInt();
-								if (item1 != 4) {
+								if (item1 != 5) {
 									System.out.println(treinador1.getNome()
 											+ ", choose the pokemon to heal: ");
 									treinador1.mostraPokemon();
 									novo1 = sc.nextInt() - 1;
 									Listas.listaItens[item1 - 1]
 											.usar(treinador1.getListaPok()[novo1]);
-								} else if (item1 == 4) {
+								} else if (item1 == 5) {
 									if (Listas.PokeBall.capturaPok(selvagem)) {
 										System.out.println("Gotcha!");
 										System.out.println(selvagem.getNome()
-												+ "was caught!");
+												+ " was caught!");
 										i = 0;
 										while (treinador1.getListaPok()[i] != null
 												|| i < 7) {
@@ -249,6 +274,7 @@ public class Evento {
 								batalha.finalizaBatalha();
 							}
 						}
+						batalha.fim = false;
 
 					}
 				}
@@ -259,7 +285,8 @@ public class Evento {
 
 			Pokemon ativo1, ativo2;
 			int novo1 = 0, novo2 = 0, item1 = 0, item2 = 0;
-
+			
+			texto = sc.nextLine();
 			Treinador treinador1 = batalha.pegaDados();
 			Treinador treinador2 = batalha.pegaDados();
 
@@ -274,6 +301,13 @@ public class Evento {
 					+ ativo2.getNome() + "!");
 
 			while (Evento.fim != true) {
+				
+				int i;
+				
+				for (i = 0;treinador1.getListaPok()[i].getAtivo()==false;i++);
+				ativo1 = treinador1.getListaPok()[i];
+				for (i = 0;treinador2.getListaPok()[i].getAtivo()==false;i++);
+				ativo2 = treinador2.getListaPok()[i];
 
 				System.out.println(treinador1.getNome() + ", What will "
 						+ ativo1.getNome() + "(" + ativo1.getHpMax() + "/"
@@ -285,12 +319,20 @@ public class Evento {
 					treinador1.escolheAtaque(ativo1);
 					Evento.ataque1 = sc.nextInt() - 1;
 				} else if (Evento.acao1 == 2) {
-					treinador1.escolheItem();
+					treinador1.escolheItem(2);
 					item1 = sc.nextInt();
 					System.out.println(treinador1.getNome()
 							+ ", choose the pokemon to heal: ");
 					treinador1.mostraPokemon();
 					novo1 = sc.nextInt() - 1;
+					while (treinador1.getListaPok()[novo1].getHp() <= 0){
+						System.out.println("It won't have any effect.");
+						System.out.println(treinador1.getNome()
+								+ ", choose the pokemon to heal: ");
+						treinador1.mostraPokemon();
+						novo1 = sc.nextInt() - 1;
+						
+					}
 				} else if (Evento.acao1 == 3) {
 					System.out.println(treinador1.getNome()
 							+ ", choose another pokemon to battle: ");
@@ -310,7 +352,7 @@ public class Evento {
 					treinador2.escolheAtaque(ativo2);
 					Evento.ataque2 = sc.nextInt() - 1;
 				} else if (Evento.acao2 == 2) {
-					treinador2.escolheItem();
+					treinador2.escolheItem(2);
 					item2 = sc.nextInt();
 					System.out.println(treinador2.getNome()
 							+ ", choose the pokemon to heal: ");

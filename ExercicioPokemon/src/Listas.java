@@ -13,7 +13,7 @@ public class Listas {
 	static Ataque QuickAttack = new Ataque(40, 4, "Quick Atack", "Normal");
 	static Ataque TriAttack = new Ataque(80, 2, "TriAttack", "Normal");
 	static Ataque ExtremeSpeed = new Ataque(80, 5, "Extreme Speed", "Normal");
-	static Ataque HyperBeam = new Ataque(150, 4, "HyperBeam", "Normal");
+	static Ataque HyperBeam = new Ataque(150, 4, "Hyper Beam", "Normal");
 	static Ataque SkullBash = new Ataque(60, 2, "Skull Bash", "Normal");
 	static Ataque Bubble = new Ataque(20, 1, "Bubble", "Water");
 	static Ataque BubbleBeam = new Ataque(65, 2, "Bubblebeam", "Water");
@@ -23,7 +23,7 @@ public class Listas {
 	static Ataque MagicalLeaf = new Ataque(60, 2, "Magical Leaf", "Grass");
 	static Ataque PetalDance = new Ataque(70, 3, "Petal Dance", "Grass");
 	static Ataque SolarBeam = new Ataque(120, 1, "Solar Beam", "Grass");
-	static Ataque WingAttack = new Ataque(60, 3, "Wing Atack", "Flying");
+	static Ataque WingAttack = new Ataque(60, 3, "Wing Attack", "Flying");
 	static Ataque Peck = new Ataque(35, 1, "Peck", "Flying");
 	static Ataque Gust = new Ataque(40, 2, "Gust", "Flying");
 	static Ataque DrillPeck = new Ataque(80, 3, "Drill Peck", "Flying");

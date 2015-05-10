@@ -62,6 +62,10 @@ public class Pokemon {
 		return tipo[1];
 	}
 	
+	public boolean getAtivo(){
+		return this.ativo;
+	}
+	
 	
 	
 	public void AumentaHp(int cura){

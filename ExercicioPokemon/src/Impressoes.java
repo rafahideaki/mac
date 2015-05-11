@@ -91,6 +91,35 @@ public class Impressoes {
 	}
 	
 	
+	public void treinadoresBatalham(Treinador treinador1, Treinador treinador2){
+		int i;
+		System.out.println("+---------------------------------------------------------+");
+		System.out.printf("|"+ treinador1.getNome() + " and " + treinador2.getNome()+ " would like to battle!");
+		for (i = 0;i < 30 -treinador1.getNome().length()-treinador2.getNome().length();i++){
+			System.out.printf(" ");
+		}
+		System.out.println("|");
+		System.out.println("|                                                         |");
+		System.out.println("+---------------------------------------------------------+");
+	}
+	
+	public void treinadorManda(Treinador treinador,Pokemon pokemon){
+		int i;
+		System.out.println("+---------------------------------------------------------+");
+		System.out.printf("|"+treinador.getNome() + " sent");
+		for (i = 0; i < 52 - treinador.getNome().length();i ++){
+			System.out.printf(" ");
+		}
+		System.out.println("|");
+		System.out.printf("|out "+pokemon.getNome()+ "!");
+		for (i = 0; i < 52 - pokemon.getNome().length(); i ++){
+			System.out.printf(" ");
+		}
+		System.out.println("|");
+		System.out.println("+---------------------------------------------------------+");
+		
+	}
+	
 	public static void main (String[] args){
 		Scanner sc = new Scanner(System.in);
 		String texto;

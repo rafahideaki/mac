@@ -28,23 +28,42 @@ public class Treinador {
 	public void trocaPokemon(Pokemon ativo, Pokemon novo){
 		ativo.DesativaPokemon();
 		novo.AtivaPokemon();
+		System.out.println(" ");
 		System.out.println(ativo.getNome() + " that's enough! Come back! Go " + novo.getNome());
+		System.out.println(" ");
+		System.out.println("--------------------------------------------");
 	}
 		
 	public void usaItem (Item item,Pokemon pokemon){
 		if (pokemon.getHp() != 0){
 			item.usar(pokemon);
 		} else {
+			System.out.println(" ");
 			System.out.println(pokemon.getNome() + "is fainted! Choose another pokemon to heal");
+			System.out.println(" ");
+			System.out.println("--------------------------------------------");
 		}	
 	}
 	
 	
-	
+	public Pokemon getAtivo( Treinador treinador){
+		int i;
+		for(i = 0; i < treinador.getListaPok().length; i ++){
+			if(treinador.getNumPokemon() > 0){
+				if(treinador.getListaPok()[i].getAtivo() == true){
+					return treinador.getListaPok()[i];
+				}
+		    }				
+		}
+		return Listas.Charizard;
+	}
 	
 	
 	public void escolheAtaque(Pokemon pokemon){
+		System.out.println(" ");
 		System.out.println("Choose your move: " + pokemon.mostraAtaques());
+		System.out.println(" ");
+		System.out.println("--------------------------------------------");
 	}
 	
 	public void escolheItem(int tipoBatalha){
@@ -52,11 +71,16 @@ public class Treinador {
 			System.out.println("Choose your item: (1) " + Listas.HyperPotion.getNome() + " (2) " + Listas.SuperPotion.getNome()+
 								" (3) " + Listas.Potion.getNome()  + " (4) " + Listas.FullRestore.getNome()+
 								" (5) " + Listas.PokeBall.getNome());
-
+		
 		}
 		if (tipoBatalha == 2){
-			System.out.println("Choose your item: (1) " + Listas.HyperPotion.getNome() + " (2) " + Listas.SuperPotion.getNome()+
-								" (3) " + Listas.Potion.getNome()  + " (4) " + Listas.FullRestore.getNome());
+			System.out.println(" ");
+			System.out.println("Choose your item: ");
+			System.out.println(" (1) " + Listas.HyperPotion.getNome() + " (2) " + Listas.SuperPotion.getNome());
+			System.out.println(" (3) " + Listas.Potion.getNome()  + " (4) " + Listas.FullRestore.getNome());
+			System.out.println(" ");
+			System.out.println("--------------------------------------------");
+		
 		}
 	}
 	

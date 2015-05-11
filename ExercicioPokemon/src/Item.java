@@ -24,7 +24,10 @@ public class Item {
 			pt_cura = this.cura;
 		}
 		pokemon.AumentaHp(this.cura);
+		System.out.println(" ");
 		System.out.println(pokemon.getNome()+"'s HP was restored by "+pt_cura+" point(s).");
+		System.out.println(" ");
+		System.out.println("--------------------------------------------");
 	}
 	
 	public boolean capturaPok(Pokemon pokemon){

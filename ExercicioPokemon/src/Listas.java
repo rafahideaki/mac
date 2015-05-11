@@ -1,54 +1,55 @@
 public class Listas {
 
-	static Ataque Ember = new Ataque(40, 1, "Ember", "Fire");
-	static Ataque Eruption = new Ataque(150, 3, "Eruption", "Fire");
-	static Ataque FireBlast = new Ataque(120, 4, "Fire Blast", "Fire");
-	static Ataque Flamethower = new Ataque(95, 3, "Flamethower", "Fire");
-	static Ataque BodySlam = new Ataque(85, 2, "Body Slam", "Normal");
-	static Ataque Facade = new Ataque(70, 2, "Facade", "Normal");
-	static Ataque Tackle = new Ataque(35, 1, "Tackle", "Normal");
-	static Ataque Headbutt = new Ataque(70, 2, "Headbutt", "Normal");
-	static Ataque Scratch = new Ataque(40, 1, "Scratch", "Normal");
-	static Ataque Rage = new Ataque(20, 2, "Rage", "Normal");
-	static Ataque QuickAttack = new Ataque(40, 4, "Quick Atack", "Normal");
-	static Ataque TriAttack = new Ataque(80, 2, "TriAttack", "Normal");
-	static Ataque ExtremeSpeed = new Ataque(80, 5, "Extreme Speed", "Normal");
-	static Ataque HyperBeam = new Ataque(150, 4, "Hyper Beam", "Normal");
-	static Ataque SkullBash = new Ataque(60, 2, "Skull Bash", "Normal");
-	static Ataque Bubble = new Ataque(20, 1, "Bubble", "Water");
-	static Ataque BubbleBeam = new Ataque(65, 2, "Bubblebeam", "Water");
-	static Ataque HydroPump = new Ataque(120, 4, "Hydro Pump", "Water");
-	static Ataque WaterGun = new Ataque(40, 2, "Water Gun", "Water");
-	static Ataque Splash = new Ataque(0, 1000000, "Splash", "Normal");
-	static Ataque MagicalLeaf = new Ataque(60, 2, "Magical Leaf", "Grass");
-	static Ataque PetalDance = new Ataque(70, 3, "Petal Dance", "Grass");
-	static Ataque SolarBeam = new Ataque(120, 1, "Solar Beam", "Grass");
-	static Ataque WingAttack = new Ataque(60, 3, "Wing Attack", "Flying");
-	static Ataque Peck = new Ataque(35, 1, "Peck", "Flying");
-	static Ataque Gust = new Ataque(40, 2, "Gust", "Flying");
-	static Ataque DrillPeck = new Ataque(80, 3, "Drill Peck", "Flying");
-	static Ataque SkyAttack = new Ataque(140, 4, "Sky Attack", "Flying");
-	static Ataque Spark = new Ataque(65, 2, "Spark", "Electric");
-	static Ataque ThunderBolt = new Ataque(95, 2, "Thunderbolt", "Electric");
-	static Ataque Thunder = new Ataque(120, 3, "Thunder", "Electric");
-	static Ataque IronTail = new Ataque(100, 2, "Iron Tail", "Steel");
-	static Ataque Dig = new Ataque(80, 2, "Dig", "Ground");
-	static Ataque Magnitude = new Ataque(90, 3, "Magnitude", "Ground");
-	static Ataque Earthquake = new Ataque(100, 4, "Earthquake", "Ground");
-	static Ataque MegaHorn = new Ataque(120, 4, "Megahorn", "Bug");
-	static Ataque DoubleKick = new Ataque(60, 2, "Double Kick", "Fighting");
-	static Ataque FocusPunch = new Ataque(150, 4, "Focus Punch", "Fighting");
-	static Ataque SkyUppercut = new Ataque(85, 3, "Sky Uppercut", "Fighting");
-	static Ataque CrossChop = new Ataque(100, 3, "CrossChop", "Fighting");
-	static Ataque Psychic = new Ataque(90, 4, "Psychich", "Psychic");
-	static Ataque Psybeam = new Ataque(65, 2, "Psybeam", "Psychic");
-	static Ataque LusterPurge = new Ataque(70, 2, "Luster Purge", "Psychic");
-	static Ataque Crunch = new Ataque(80, 3, "Crunch", "Dark");
-	static Ataque DragonClaw = new Ataque(80, 3, "Dragon Claw", "Dragon");
-	static Ataque RockTomb = new Ataque(50, 2, "Rock Tomb", "Rock");
-	static Ataque Sonicboom = new Ataque(20, 1, "Sonic Boom", "Normal");
-	static Ataque IceBeam = new Ataque(95, 3, "Ice Beam", "Ice");
-
+	static Golpe Ember = new Golpe(40, 1, "Ember", "Fire");
+	static Golpe Eruption = new Golpe(150, 3, "Eruption", "Fire");
+	static Golpe FireBlast = new Golpe(120, 4, "Fire Blast", "Fire");
+	static Golpe Flamethower = new Golpe(95, 3, "Flamethower", "Fire");
+	static Golpe BodySlam = new Golpe(85, 2, "Body Slam", "Normal");
+	static Golpe Facade = new Golpe(70, 2, "Facade", "Normal");
+	static Golpe Tackle = new Golpe(35, 1, "Tackle", "Normal");
+	static Golpe Headbutt = new Golpe(70, 2, "Headbutt", "Normal");
+	static Golpe Scratch = new Golpe(40, 1, "Scratch", "Normal");
+	static Golpe Rage = new Golpe(20, 2, "Rage", "Normal");
+	static Golpe QuickAttack = new Golpe(40, 4, "Quick Atack", "Normal");
+	static Golpe TriAttack = new Golpe(80, 2, "TriAttack", "Normal");
+	static Golpe ExtremeSpeed = new Golpe(80, 5, "Extreme Speed", "Normal");
+	static Golpe HyperBeam = new Golpe(150, 4, "HyperBeam", "Normal");
+	static Golpe SkullBash = new Golpe(60, 2, "Skull Bash", "Normal");
+	static Golpe Bubble = new Golpe(20, 1, "Bubble", "Water");
+	static Golpe BubbleBeam = new Golpe(65, 2, "Bubblebeam", "Water");
+	static Golpe HydroPump = new Golpe(120, 4, "Hydro Pump", "Water");
+	static Golpe WaterGun = new Golpe(40, 2, "Water Gun", "Water");
+	static Golpe Splash = new Golpe(0, 1000000, "Splash", "Normal");
+	static Golpe MagicalLeaf = new Golpe(60, 2, "Magical Leaf", "Grass");
+	static Golpe PetalDance = new Golpe(70, 3, "Petal Dance", "Grass");
+	static Golpe SolarBeam = new Golpe(120, 1, "Solar Beam", "Grass");
+	static Golpe WingAttack = new Golpe(60, 3, "Wing Atack", "Flying");
+	static Golpe Peck = new Golpe(35, 1, "Peck", "Flying");
+	static Golpe Gust = new Golpe(40, 2, "Gust", "Flying");
+	static Golpe DrillPeck = new Golpe(80, 3, "Drill Peck", "Flying");
+	static Golpe SkyAttack = new Golpe(140, 4, "Sky Attack", "Flying");
+	static Golpe Spark = new Golpe(65, 2, "Spark", "Electric");
+	static Golpe ThunderBolt = new Golpe(95, 2, "Thunderbolt", "Electric");
+	static Golpe Thunder = new Golpe(120, 3, "Thunder", "Electric");
+	static Golpe IronTail = new Golpe(100, 2, "Iron Tail", "Steel");
+	static Golpe Dig = new Golpe(80, 2, "Dig", "Ground");
+	static Golpe Magnitude = new Golpe(90, 3, "Magnitude", "Ground");
+	static Golpe Earthquake = new Golpe(100, 4, "Earthquake", "Ground");
+	static Golpe MegaHorn = new Golpe(120, 4, "Megahorn", "Bug");
+	static Golpe DoubleKick = new Golpe(60, 2, "Double Kick", "Fighting");
+	static Golpe FocusPunch = new Golpe(150, 4, "Focus Punch", "Fighting");
+	static Golpe SkyUppercut = new Golpe(85, 3, "Sky Uppercut", "Fighting");
+	static Golpe CrossChop = new Golpe(100, 3, "CrossChop", "Fighting");
+	static Golpe Psychic = new Golpe(90, 4, "Psychich", "Psychic");
+	static Golpe Psybeam = new Golpe(65, 2, "Psybeam", "Psychic");
+	static Golpe LusterPurge = new Golpe(70, 2, "Luster Purge", "Psychic");
+	static Golpe Crunch = new Golpe(80, 3, "Crunch", "Dark");
+	static Golpe DragonClaw = new Golpe(80, 3, "Dragon Claw", "Dragon");
+	static Golpe RockTomb = new Golpe(50, 2, "Rock Tomb", "Rock");
+	static Golpe Sonicboom = new Golpe(20, 1, "Sonic Boom", "Normal");
+	static Golpe IceBeam = new Golpe(95, 3, "Ice Beam", "Ice");
+	
+	
 	static Pokemon Charmander = new Pokemon("Charmander", 50, "Fire", Ember, Tackle,
 			Scratch, Rage);
 	static Pokemon Squirtle = new Pokemon("Squirtle", 55, "Water", WaterGun, Bubble,
@@ -158,7 +159,7 @@ public class Listas {
 	/* 3 */FullRestore,
 	/* 4 */PokeBall};
 
-	static Ataque[] listaAtaques = new Ataque[] {
+	static Golpe[] listaAtaques = new Golpe[] {
 	/* 0 */Ember,
 	/* 1 */Eruption,
 	/* 2 */FireBlast,

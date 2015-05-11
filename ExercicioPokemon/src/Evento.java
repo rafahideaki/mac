@@ -5,7 +5,7 @@ public class Evento {
 	private static boolean fim = false;
 	private static int acao1, acao2;
 	private static int ataque1, ataque2;
-	private static Pokemon ativo1,ativo2;
+	private static Pokemon ativo1, ativo2;
 
 	public static int leTeclado() {
 		int numero;
@@ -27,9 +27,8 @@ public class Evento {
 		Evento.acao2 = escolha;
 	}
 
-	public void realizaAtaques(Ataque ataque1, Ataque ataque2,
-			Pokemon pokemon1, Pokemon pokemon2, Treinador treinador1,
-			Treinador treinador2) {
+	public void realizaAtaques(Golpe ataque1, Golpe ataque2, Pokemon pokemon1,
+			Pokemon pokemon2, Treinador treinador1, Treinador treinador2) {
 
 		if (ataque1.getPrioridade() >= ataque2.getPrioridade()) {
 			ataque1.ataca(pokemon1, pokemon2);
@@ -45,7 +44,6 @@ public class Evento {
 			ataque2.ataca(pokemon2, pokemon1);
 			if (pokemon1.verificaMorte(treinador1) == true) {
 				fim = Evento.verificaVitoria(treinador2, treinador1);
-				
 			} else {
 				ataque1.ataca(pokemon1, pokemon2);
 				if (pokemon2.verificaMorte(treinador2) == true) {
@@ -56,22 +54,20 @@ public class Evento {
 	}
 
 	public static boolean verificaVitoria(Treinador winner, Treinador looser) {
-		LeTeclado A = new LeTeclado();
 		int num;
 		if (looser.getNumPokemon() == 0) {
+			System.out.println(" ");
 			System.out.println(winner.getNome() + " wins the battle!");
 			return true;
 		} else {
+			System.out.println(" ");
 			System.out.println(looser.getNome() + ", choose another pokemon: ");
-			looser.mostraPokemon();
-			num = sc.nextInt()-1;
-			while (looser.getListaPok()[num].getHp() == 0){
-				System.out.println(looser.getListaPok()[num].getNome() + " has no energy left to battle!");
-				System.out.println(looser.getNome() + ", choose another pokemon: ");
-				looser.mostraPokemon();
-				num = sc.nextInt()-1;
-			}
-			looser.getListaPok()[num].AtivaPokemon();
+			System.out.println("--------------------------------------------");
+			System.out.println(looser.mostraPokemon());
+			System.out.println(" ");
+			System.out.println("--------------------------------------------");
+			num = sc.nextInt();
+			looser.getListaPok()[num - 1].AtivaPokemon();
 			return false;
 		}
 	}
@@ -94,9 +90,20 @@ public class Evento {
 
 		System.out.println("What's your name?: ");
 		nome = sc.nextLine();
-		System.out.println(nome + ",Choose 6 pokemon!");
+		System.out.println(nome + ",Choose up to 6 pokemon!");
 		Listas.mostraListaCompleta();
+		System.out.println("--------------------------------------------");
+		System.out.println(" ");
+		System.out.println("Ex 1: 1 2 3 4 5 6");
+		System.out.println("Ex 2: 12 23 1 10 0");
+		System.out.println("Ex 3: 17 21 1");
+		System.out.println("Ex 4: 0 1 29 18 17");
+		System.out.println(" ");
+		System.out.println("--------------------------------------------");
+		System.out.println(" ");
 		texto = sc.nextLine();
+		System.out.println(" ");
+		System.out.println("--------------------------------------------");
 		int listaInteiros[] = this.stringParaListaInteiros(texto);
 		Pokemon[] listaPokTreinador = new Pokemon[6];
 		this.putPokemons(listaInteiros, listaPokTreinador, Listas.listaPokemons);
@@ -107,9 +114,12 @@ public class Evento {
 	}
 
 	public Pokemon escolhePrimeiroPok(Treinador treinador) {
+		System.out.println(" ");
 		System.out.println(treinador.getNome() + ",choose your first Pokemon!");
 		treinador.mostraPokemon();
 		int escolha = sc.nextInt() - 1;
+		System.out.println(" ");
+		System.out.println("--------------------------------------------");
 		treinador.getListaPok()[escolha].AtivaPokemon();
 		return treinador.getListaPok()[escolha];
 	}
@@ -183,45 +193,47 @@ public class Evento {
 						Pokemon listaSelv[] = new Pokemon[] { selvagem };
 						Item listaItem[] = new Item[0];
 
-						
-						Treinador treinador2 = new Treinador(selvagem.getNome(), listaSelv,
-								listaItem, 1);
+						Treinador treinador2 = new Treinador(
+								selvagem.getNome(), listaSelv, listaItem, 1);
 						int novo1 = 0, item1 = 0;
-						
+
 						int i = 0;
-						while (treinador1.getListaPok()[i].getHp()==0 && i<treinador1.getNumPokemon()){
+						while (treinador1.getListaPok()[i].getHp() == 0
+								&& i < treinador1.getNumPokemon()) {
 							i++;
 						}
 						ativo1 = treinador1.getListaPok()[i];
 						ativo1.AtivaPokemon();
-						//System.out.println("Wild " + selvagem.getNome()
-						//		+ " appeared!");
-						//System.out.println("Go! " + ativo1.getNome() + "!");
+						// System.out.println("Wild " + selvagem.getNome()
+						// + " appeared!");
+						// System.out.println("Go! " + ativo1.getNome() + "!");
 						imp.imprimePokemonSelvagem(selvagem);
 						texto = sc.nextLine();
 						imp.imprimePokemonTreinador(ativo1);
 						texto = sc.nextLine();
-						
+
 						while (batalha.fim != true) {
 							int k;
-							
-							for (k = 0;treinador1.getListaPok()[k].getAtivo()==false;k++);
+
+							for (k = 0; treinador1.getListaPok()[k].getAtivo() == false; k++)
+								;
 							ativo1 = treinador1.getListaPok()[k];
-							//System.out.println(treinador1.getNome()
-							//		+ ", What will " + Evento.ativo1.getNome() + "("
-							//		+ Evento.ativo1.getHpMax() + "/" + Evento.ativo1.getHp()
-							//		+ ") do ?");
-							//System.out.println("(1)FIGHT / (2)BAG / (3)POKEMON / (4)RUN ");
-							
+							// System.out.println(treinador1.getNome()
+							// + ", What will " + Evento.ativo1.getNome() + "("
+							// + Evento.ativo1.getHpMax() + "/" +
+							// Evento.ativo1.getHp()
+							// + ") do ?");
+							// System.out.println("(1)FIGHT / (2)BAG / (3)POKEMON / (4)RUN ");
+
 							imp.imprimePokemon(ativo1);
 							imp.imprimeOpcoes(ativo1);
 							Evento.acao1 = sc.nextInt();
 
 							if (Evento.acao1 == 1) {
-								//treinador1.escolheAtaque(Evento.ativo1);
+								// treinador1.escolheAtaque(Evento.ativo1);
 								imp.imprimePokemon(ativo1);
 								imp.imprimeAtaques(ativo1);
-								
+
 								Evento.ataque1 = sc.nextInt() - 1;
 								batalha.realizaAtaques(
 										Evento.ativo1.getAtaques()[Evento.ataque1],
@@ -243,12 +255,13 @@ public class Evento {
 										System.out.println("Gotcha!");
 										System.out.println(selvagem.getNome()
 												+ " was caught!");
+										batalha.finalizaBatalha();
 										i = 0;
 										while (treinador1.getListaPok()[i] != null
-												|| i < 7) {
+												&& i < 6) {
 											i++;
 										}
-										if (i != 7) {
+										if (i != 6) {
 											treinador1.getListaPok()[i] = selvagem;
 											Listas.FullRestore.usar(selvagem);
 										}
@@ -256,8 +269,16 @@ public class Evento {
 										System.out.println("Aww!");
 										System.out
 												.println("It appeared to be caught!");
+										selvagem.escolheAtaqueAleatório().ataca(
+												selvagem, ativo1);
 									}
 
+								}
+
+								
+								if (ativo1.verificaMorte(treinador1) == true) {
+									Evento.fim = Evento.verificaVitoria(
+											treinador2, treinador1);
 								}
 
 							} else if (Evento.acao1 == 3) {
@@ -269,12 +290,19 @@ public class Evento {
 								treinador1.trocaPokemon(ativo1,
 										treinador1.getListaPok()[novo1]);
 								ativo1 = treinador1.getListaPok()[novo1];
+								selvagem.escolheAtaqueAleatório().ataca(
+										selvagem, ativo1);
+								if (ativo1.verificaMorte(treinador1) == true) {
+									Evento.fim = Evento.verificaVitoria(
+											treinador2, treinador1);
+								}
 							} else {
 								System.out.println("Got away safely!");
 								batalha.finalizaBatalha();
 							}
 						}
 						batalha.fim = false;
+						texto = sc.nextLine();
 
 					}
 				}
@@ -282,11 +310,16 @@ public class Evento {
 			}
 
 		} else {
-
-			Pokemon ativo1, ativo2;
-			int novo1 = 0, novo2 = 0, item1 = 0, item2 = 0;
-			
 			texto = sc.nextLine();
+
+			int novo1 = 0, novo2 = 0, item1 = 0, item2 = 0;
+			Pokemon ativo1 = new Pokemon("Inicial", 100, "Normal,", " ",
+					Listas.BodySlam, Listas.Bubble, Listas.BubbleBeam,
+					Listas.CrossChop);
+			Pokemon ativo2 = new Pokemon("Inicial", 100, "Normal,", " ",
+					Listas.BodySlam, Listas.Bubble, Listas.BubbleBeam,
+					Listas.CrossChop);
+
 			Treinador treinador1 = batalha.pegaDados();
 			Treinador treinador2 = batalha.pegaDados();
 
@@ -295,25 +328,28 @@ public class Evento {
 
 			System.out.println(treinador1.getNome() + " and "
 					+ treinador2.getNome() + " would like to battle!");
+			System.out.println(" ");
 			System.out.println(treinador1.getNome() + " sent out "
 					+ ativo1.getNome() + "!");
+			System.out.println(" ");
 			System.out.println(treinador2.getNome() + " sent out "
 					+ ativo2.getNome() + "!");
+			System.out.println("");
+			System.out.println("--------------------------------------------");
 
 			while (Evento.fim != true) {
-				
-				int i;
-				
-				for (i = 0;treinador1.getListaPok()[i].getAtivo()==false;i++);
-				ativo1 = treinador1.getListaPok()[i];
-				for (i = 0;treinador2.getListaPok()[i].getAtivo()==false;i++);
-				ativo2 = treinador2.getListaPok()[i];
 
+				System.out
+						.println("--------------------------------------------");
+				System.out.println(" ");
 				System.out.println(treinador1.getNome() + ", What will "
 						+ ativo1.getNome() + "(" + ativo1.getHpMax() + "/"
 						+ ativo1.getHp() + ") do ?");
-				System.out.println("(1)FIGHT / (2)BAG / (3)POKEMON / (4)RUN ");
+				System.out.println("(1)FIGHT / (3)POKEMON");
+				System.out.println("(2) BAG   / (4)RUN");
 				Evento.acao1 = sc.nextInt();
+				System.out
+						.println("--------------------------------------------");
 
 				if (Evento.acao1 == 1) {
 					treinador1.escolheAtaque(ativo1);
@@ -322,17 +358,9 @@ public class Evento {
 					treinador1.escolheItem(2);
 					item1 = sc.nextInt();
 					System.out.println(treinador1.getNome()
-							+ ", choose the pokemon to heal: ");
+							+ ", choose a pokemon to heal: ");
 					treinador1.mostraPokemon();
 					novo1 = sc.nextInt() - 1;
-					while (treinador1.getListaPok()[novo1].getHp() <= 0){
-						System.out.println("It won't have any effect.");
-						System.out.println(treinador1.getNome()
-								+ ", choose the pokemon to heal: ");
-						treinador1.mostraPokemon();
-						novo1 = sc.nextInt() - 1;
-						
-					}
 				} else if (Evento.acao1 == 3) {
 					System.out.println(treinador1.getNome()
 							+ ", choose another pokemon to battle: ");
@@ -342,11 +370,17 @@ public class Evento {
 					batalha.finalizaBatalha();
 				}
 
+				System.out
+						.println("--------------------------------------------");
+				System.out.println(" ");
 				System.out.println(treinador2.getNome() + ", What will "
 						+ ativo2.getNome() + "(" + ativo2.getHpMax() + "/"
 						+ ativo2.getHp() + ") do ?");
-				System.out.println("(1)FIGHT / (2)BAG / (3)POKEMON / (4)RUN ");
+				System.out.println("(1)FIGHT / (3)POKEMON");
+				System.out.println("(2)BAG   / (4)RUN");
 				Evento.acao2 = sc.nextInt();
+				System.out
+						.println("--------------------------------------------");
 
 				if (Evento.acao2 == 1) {
 					treinador2.escolheAtaque(ativo2);
@@ -354,14 +388,22 @@ public class Evento {
 				} else if (Evento.acao2 == 2) {
 					treinador2.escolheItem(2);
 					item2 = sc.nextInt();
+					System.out.println(" ");
 					System.out.println(treinador2.getNome()
-							+ ", choose the pokemon to heal: ");
+							+ ", choose a pokemon to heal: ");
 					treinador2.mostraPokemon();
+					System.out.println(" ");
+					System.out
+							.println("--------------------------------------------");
 					novo2 = sc.nextInt() - 1;
 				} else if (Evento.acao2 == 3) {
+					System.out.println(" ");
 					System.out.println(treinador2.getNome()
 							+ ", choose another pokemon to battle: ");
 					treinador2.mostraPokemon();
+					System.out.println(" ");
+					System.out
+							.println("--------------------------------------------");
 					novo2 = sc.nextInt() - 1;
 					treinador2.trocaPokemon(ativo2,
 							treinador2.getListaPok()[novo2]);
@@ -419,13 +461,14 @@ public class Evento {
 						}
 
 					}
-
 				}
 
+				ativo1 = treinador1.getAtivo(treinador1);
+				ativo2 = treinador2.getAtivo(treinador2);
 			}
-		}
 
-		sc.close();
+			sc.close();
+		}
 
 	}
 
